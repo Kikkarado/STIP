@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/css/style.css">
+	<title>Document</title>
+	<style></style>
+</head>
+
+<body class="demonstration">
+	<button class="accordion">Задание 1</button>
+	<div class="panel">
+		<p>Горизонтальное двухуровневое меню, раскрывающееся при щелчке
+			левой кнопкой мыши. Второй уровень меню скрывается при повторном щелчке по
+			пункту меню.</p>
+	</div>
+
+	<button class="accordion">Решение задания 1</button>
+	<div class="panel">
+		<div class="navbar">
+			<a href="#home">Home</a>
+			<a href="#news">News</a>
+			<div class="dropdown">
+				<button class="dropbtn" onclick="dropDown()">Dropdown
+					<i class="fa fa-caret-down"></i>
+				</button>
+				<div class="dropdown-content" id="myDropdown">
+					<a href="#">Link 1</a>
+					<a href="#">Link 2</a>
+					<a href="#">Link 3</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<button class="accordion">Задание 2</button>
+	<div class="panel">
+		<p>Добавьте на страницу изображение; при наведении указателя мыши оно
+			должно постепенно уменьшаться в размерах, создавая иллюзию удаления изображения
+			(предельные значения высоты и ширины установите самостоятельно).</p>
+	</div>
+	<button class="accordion">Решение задания 2</button>
+	<div class="panel">
+		<div class="image-zoom" onmouseover="over(this);" onmouseout="out(this);">
+			<img src="/img/doggy.png" alt="Doggy" class="image" id="image">
+		</div>
+	</div>
+	<button class="accordion">Ссылка на GitHub</button>
+	<div class="panel">
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+			dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+			ea commodo consequat.</p>
+	</div>
+
+	<script>
+		var acc = document.getElementsByClassName("accordion");
+		const toggleAccordian = (acc, open = !acc.classList.contains('active')) => {
+			acc.classList.toggle('active', open)
+			const panel = acc.nextElementSibling
+			panel.style.maxHeight = open ? panel.scrollHeight + "px" : null
+		}
+
+		const elems = Array.from(acc)
+		elems.forEach(a => {
+			a.addEventListener('click', () => {
+				elems
+					.filter(e => e !== a)
+					.forEach(e => toggleAccordian(e, false))
+				toggleAccordian(a)
+			})
+		})
+
+		function dropDown() {
+			var show = document.getElementById("myDropdown").classList.toggle("show");
+			if (show.onclick && show.classList.contains('show')) {
+				document.getElementById("myDropdown").classList.remove("show");
+			}
+		}
+
+		// Close the dropdown if the user clicks outside of it
+		// window.onclick = function (e) {
+		// 	if (!e.target.matches('.dropbtn')) {
+		// 		var myDropdown = document.getElementById("myDropdown");
+		// 		if (myDropdown.classList.contains('show')) {
+		// 			myDropdown.classList.remove('show');
+		// 		}
+		// 	}
+		// }
+
+
+		var sz = 400;
+		let isHovering = false;
+		let intervalId = null;
+		function over(image) {
+			isHovering = true;
+			intervalId = setInterval(() => {
+				if (!isHovering) {
+					clearInterval(intervalId);
+					return;
+				}
+				if (sz >= 200) {
+					sz--;
+					image.style.width = sz + "px";
+					image.style.height = sz + "px";
+				}
+			}, 16)
+		}
+
+		function out(image) {
+			isHovering = false;
+			if (intervalId) {
+				clearInterval(intervalId);
+			}
+		}
+
+	</script>
+</body>
+
+</html>

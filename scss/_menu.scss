@@ -1,0 +1,40 @@
+@import "_colors";
+
+.menu {
+	color: $dark-color;
+	display: flex;
+	width: 100%;
+	height: 100%;
+	background: $light-color;
+	margin: 0px;
+}
+
+.dropDown {
+	display: inline-block;
+	min-width: 100%;
+	min-height: 100%;
+}
+
+select {
+	font-size: 16pt;
+	display: inline-block;
+	position: absolute;
+	text-align: center;
+	transform: translate(-50%, -50%);
+	left: 50%;
+	top: 50%;
+	min-width: 60%;
+	appearance: none;
+	height: 30%;
+	width: 80%;
+	color: $dark-color;
+	border-width: initial;
+	border-style: none;
+	border-color: initial;
+	border-image: initial;
+	border-radius: 15px;
+	padding: 0px;
+	margin: 0px;
+	outline: none;
+	background: $brand-color;
+}

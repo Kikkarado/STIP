@@ -12,35 +12,28 @@
 <body class="demonstration">
 	<button class="accordion">Задание 1</button>
 	<div class="panel">
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-			dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-			ea commodo consequat.</p>
+		<p>За указателем мыши перемещаются часы и дата (предусмотреть возможность
+			установки часов и даты).</p>
 	</div>
 
 	<button class="accordion">Решение задания 1</button>
 	<div class="panel">
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-			dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-			ea commodo consequat.</p>
+		<div class="content">
+			<div class="date-picker">
+				<input type="datetime-local" id="datetime-picker">
+			</div>
+			<div class="field-move" id="field-move">
+				<strong id="datetime"></strong>
+			</div>
+		</div>
 	</div>
 
-	<button class="accordion">Задание 2</button>
-	<div class="panel">
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-			dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-			ea commodo consequat.</p>
-	</div>
-	<button class="accordion">Решение задания 2</button>
-	<div class="panel">
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-			dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-			ea commodo consequat.</p>
-	</div>
 	<button class="accordion">Ссылка на GitHub</button>
 	<div class="panel">
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-			dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-			ea commodo consequat.</p>
+		<p><a class="git-link" href="https://github.com/Kikkarado/STIP/blob/feature/frame/LR3.html"
+				rel="noopener noreferrer"
+				target="_blank">https://github.com/Kikkarado/STIP/blob/feature/frame/LR3.html</a>
+		</p>
 	</div>
 
 	<script>
@@ -60,6 +53,74 @@
 				toggleAccordian(a)
 			})
 		})
+
+		const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+		var dt = document.getElementById("datetime");
+		dt.innerHTML = new Date().toLocaleDateString(undefined, {
+			year: 'numeric',
+			month: 'numeric',
+			day: 'numeric',
+			hour: 'numeric',
+			minute: 'numeric',
+			second: 'numeric'
+		});
+		var dtp = document.getElementById("datetime-picker");
+		if (dtp) {
+			dtp.addEventListener('change', () => {
+				dt.innerHTML = new Date(dtp.value).toLocaleDateString(undefined, {
+					year: 'numeric',
+					month: 'numeric',
+					day: 'numeric',
+					hour: 'numeric',
+					minute: 'numeric',
+					second: 'numeric'
+				});
+			});
+		}
+
+		var date = document.getElementById("datetime");
+		dragElement(document.getElementById("field-move"));
+
+		function dragElement(elmnt) {
+			var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+			if (document.getElementById(elmnt.id)) {
+				/* if present, the header is where you move the DIV from:*/
+				document.getElementById(elmnt.id).onmousedown = dragMouseDown;
+			} else {
+				/* otherwise, move the DIV from anywhere inside the DIV:*/
+				elmnt.onmousedown = dragMouseDown;
+			}
+
+			function dragMouseDown(e) {
+				e = e || window.event;
+				e.preventDefault();
+				// get the mouse cursor position at startup:
+				pos3 = e.clientX;
+				pos4 = e.clientY;
+				document.onmouseup = closeDragElement;
+				// call a function whenever the cursor moves:
+				document.onmousemove = elementDrag;
+			}
+
+			function elementDrag(e) {
+				e = e || window.event;
+				e.preventDefault();
+				// calculate the new cursor position:
+				pos1 = pos3 - e.clientX;
+				pos2 = pos4 - e.clientY;
+				pos3 = e.clientX;
+				pos4 = e.clientY;
+				// set the element's new position:
+				elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+				elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+			}
+
+			function closeDragElement() {
+				/* stop moving when mouse button is released:*/
+				document.onmouseup = null;
+				document.onmousemove = null;
+			}
+		}
 	</script>
 </body>
 

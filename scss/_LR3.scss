@@ -1,0 +1,18 @@
+.content {
+	overflow: hidden;
+	display: block;
+	position: relative;
+	background-color: $mid-color;
+	height: 70vh;
+	margin: 18px;
+	padding: 18px;
+	text-align: center;
+}
+
+.field-move {
+	background: $light-color;
+	color: $mid-color;
+	position: absolute;
+	background-color: #f1f1f1;
+	border: 1px solid #d3d3d3;
+}

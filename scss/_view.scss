@@ -25,12 +25,31 @@
 }
 
 .panel {
+	position: relative;
 	margin: 0px;
-	padding: 0 18px;
+	padding: 0px;
 	background-color: $dark-color;
 	color: $light-color;
 	max-height: 0;
 	text-align: center;
+	font-size: 18pt;
 	overflow: hidden;
 	transition: max-height 0.2s ease-out;
+}
+
+.git-link {
+	text-decoration: none;
+}
+
+.git-link:link {
+	color: $brand-color;
+}
+
+.git-link:visited {
+	color: $brand-color;
+}
+
+.git-link:hover {
+	color: $light-color;
+	text-decoration: underline dashed $brand-color;
 }

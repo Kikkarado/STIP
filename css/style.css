@@ -92,15 +92,35 @@ select {
 }
 
 .panel {
+  position: relative;
   margin: 0px;
-  padding: 0 18px;
+  padding: 0px;
   background-color: #27272a;
   color: #d4d4d8;
   max-height: 0;
   text-align: center;
+  font-size: 18pt;
   overflow: hidden;
   -webkit-transition: max-height 0.2s ease-out;
   transition: max-height 0.2s ease-out;
+}
+
+.git-link {
+  text-decoration: none;
+}
+
+.git-link:link {
+  color: #84cc16;
+}
+
+.git-link:visited {
+  color: #84cc16;
+}
+
+.git-link:hover {
+  color: #d4d4d8;
+  -webkit-text-decoration: underline dashed #84cc16;
+          text-decoration: underline dashed #84cc16;
 }
 
 .navbar {
@@ -133,6 +153,10 @@ select {
   background-color: inherit;
   font-family: inherit;
   margin: 0;
+}
+
+.navbar a:link {
+  color: #27272a;
 }
 
 .navbar a:hover,
@@ -177,6 +201,25 @@ select {
 .image {
   width: 100%;
   height: 100%;
+}
+
+.content {
+  overflow: hidden;
+  display: block;
+  position: relative;
+  background-color: #52525b;
+  height: 70vh;
+  margin: 18px;
+  padding: 18px;
+  text-align: center;
+}
+
+.field-move {
+  background: #d4d4d8;
+  color: #52525b;
+  position: absolute;
+  background-color: #f1f1f1;
+  border: 1px solid #d3d3d3;
 }
 
 html {

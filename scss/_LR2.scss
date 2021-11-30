@@ -30,6 +30,10 @@
 	margin: 0;
 }
 
+.navbar a:link {
+	color: $dark-color;
+}
+
 .navbar a:hover,
 .dropdown:hover .dropbtn,
 .dropbtn:focus {

@@ -12,39 +12,48 @@
 <body class="demonstration">
 	<button class="accordion">Задание 1</button>
 	<div class="panel">
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-			dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-			ea commodo consequat.</p>
+		<p>По нажатию на кнопку выводить модальное окно с текстом +
+			текст из текстового поля (предварительно введенный)</p>
 	</div>
 
 	<button class="accordion">Решение задания 1</button>
 	<div class="panel">
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-			dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-			ea commodo consequat.</p>
+		<div class="container" id="container">
+			<p class="title">Введите что-то</p>
+			<input class="inp" id="some-text" type="text" placeholder="...">
+			<button class="btn" id="btn">Открыть окно</button>
+		</div>
+		<div id="myModal" class="modal">
+			<div class="modal-content">
+				<span class="close">&times;</span>
+				<p id="modal-text">Вы ввели: </p>
+			</div>
+		</div>
 	</div>
 
 	<button class="accordion">Задание 2</button>
 	<div class="panel">
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-			dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-			ea commodo consequat.</p>
+		<p>Заголовок красного цвета двигается слева направо,
+			уменьшается и увеличивается по 2 раза соответственно, пока
+			не дойдет до правого края</p>
 	</div>
 	<button class="accordion">Решение задания 2</button>
 	<div class="panel">
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-			dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-			ea commodo consequat.</p>
+		<div class="content-lr5">
+			<h1 class="zag" id="anim">Заголовк</h1>
+		</div>
 	</div>
 	<button class="accordion">Ссылка на GitHub</button>
 	<div class="panel">
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-			dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-			ea commodo consequat.</p>
+		<p><a class="git-link" href="https://github.com/Kikkarado/STIP/blob/feature/frame/LR5.html"
+				rel="noopener noreferrer"
+				target="_blank">https://github.com/Kikkarado/STIP/blob/feature/frame/LR5.html</a>
+		</p>
 	</div>
 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script>
-		var acc = document.getElementsByClassName("accordion");
+		var acc = $(".accordion");
 		const toggleAccordian = (acc, open = !acc.classList.contains('active')) => {
 			acc.classList.toggle('active', open)
 			const panel = acc.nextElementSibling
@@ -60,6 +69,48 @@
 				toggleAccordian(a)
 			})
 		})
+
+		var modal = $("#myModal");
+		var span = $(".close").eq(0);
+		var btn = $("#btn");
+		var stext = $("#some-text");
+		var sttxt = $("#modal-text").text();
+
+		btn.click(function () {
+			if (stext.val()) {
+				$("#modal-text").text(sttxt + stext.val());
+			} else {
+				$("#modal-text").text(sttxt + "null");
+			}
+			modal.css({ "display": "block" });
+		});
+
+		// When the user clicks on <span> (x), close the modal
+		span.click(function () {
+			modal.css({ "display": "none" });
+		});
+
+		// When the user clicks anywhere outside of the modal, close it
+		$(window).click(function (e) {
+			if (e.target.className == "modal") {
+				modal.css({ "display": "none" });
+			}
+		});
+
+
+		let onClick = 0;
+		$("#anim").click(function () {
+			if (onClick == 0) {
+				onClick = 1;
+				$(this).css('position', 'relative').animate({ left: $(".content-lr5").width() / 2 - $(this).width() / 2, fontSize: "20px" }, 1000, "linear");
+				$(this).css('position', 'relative').animate({ left: $(".content-lr5").width() - $(this).width(), fontSize: "32px" }, 1000, "linear");
+			} else {
+				onClick = 0;
+				$(this).css('position', 'relative').animate({ left: $(".content-lr5").width() / 2, fontSize: "20px" }, 1000, "linear");
+				$(this).css('position', 'relative').animate({ left: 0, fontSize: "32px" }, 1000, "linear");
+			}
+		});
+
 	</script>
 </body>
 

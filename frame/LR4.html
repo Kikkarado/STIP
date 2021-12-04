@@ -12,35 +12,68 @@
 <body class="demonstration">
 	<button class="accordion">Задание 1</button>
 	<div class="panel">
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-			dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-			ea commodo consequat.</p>
+		<p>1. Создать страницу с динамическим содержанием &quot;Проверка
+			значений, введенных пользователем в поля формы для регистрации&quot;.
+			Форма должна содержать поля «Имя», «Фамилия», «Наименование
+			организации», «Номер кредитной карты», «Номер телефона», «Адрес
+			электронной почты», кнопки «Отправить» и «Очистить».</p>
+		<p>2. Осуществить проверку заполненности данными всех полей.</p>
+		<p>3. Построить шаблон для проверки данных кредитной карточки с
+			ограничением количества попыток неправильного ввода данных.</p>
+		<p>4. Последняя проверка должна контролировать структуру и
+			содержимое полей (правильность ввода имени и фамилии,номера
+			телефона,электронного адреса.).</p>
 	</div>
 
 	<button class="accordion">Решение задания 1</button>
 	<div class="panel">
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-			dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-			ea commodo consequat.</p>
+		<div class="content-lr4">
+			<div class="inputs">
+				<div class="container" id="container">
+					<p class="title">Имя</p>
+					<input class="inp" id="name" type="text" placeholder="Имя">
+					<p class="title">Фамилия</p>
+					<input class="inp" id="surname" type="text" placeholder="Фамилию">
+					<p class="title">Организация</p>
+					<input class="inp" id="company" type="text" placeholder="Название организации">
+					<p class="title">Номер кредитной карты</p>
+					<input class="inp" id="card" type="text" placeholder="Номер карты">
+					<p class="title">Номер телефона</p>
+					<input class="inp" id="phone" type="text" placeholder="Номер телефона">
+					<p class="title">Адрес электронной почты</p>
+					<input class="inp" id="email" type="text" placeholder="Электронная почта">
+				</div>
+			</div>
+			<div class="buttons">
+				<button class="btn" onclick="chechReg()">Отправить</button>
+				<button class="btn" onclick="clearInp()">Очистить</button>
+			</div>
+
+		</div>
 	</div>
 
 	<button class="accordion">Задание 2</button>
 	<div class="panel">
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-			dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-			ea commodo consequat.</p>
+		<p>Дана строка &#39;a1a a22a a333a a4444a a55555a aba aca&#39;. Напишите
+			регулярное выражение, которое найдет строки, в которых по краям стоят
+			буквы &#39;a&#39;, а между ними любое количество цифр.</p>
 	</div>
 	<button class="accordion">Решение задания 2</button>
 	<div class="panel">
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-			dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-			ea commodo consequat.</p>
+		<div class="content-lr4">
+			<div class="container" id="container">
+				<p class="title">Введите строку (a1a a22a a333a a4444a a55555a aba aca)</p>
+				<input class="inp" id="reStr" type="text" placeholder="...">
+				<p id="str">...</p>
+			</div>
+		</div>
 	</div>
 	<button class="accordion">Ссылка на GitHub</button>
 	<div class="panel">
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-			dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-			ea commodo consequat.</p>
+		<p><a class="git-link" href="https://github.com/Kikkarado/STIP/blob/feature/frame/LR4.html"
+				rel="noopener noreferrer"
+				target="_blank">https://github.com/Kikkarado/STIP/blob/feature/frame/LR4.html</a>
+		</p>
 	</div>
 
 	<script>
@@ -60,6 +93,104 @@
 				toggleAccordian(a)
 			})
 		})
+
+		let name = document.getElementById("name");
+		let surname = document.getElementById("surname");
+		let company = document.getElementById("company");
+		let card = document.getElementById("card");
+		let phone = document.getElementById("phone");
+		let email = document.getElementById("email");
+		let restr = document.getElementById("reStr");
+
+		const reName = /^[a-zA-Zа-яА-ЯёЁіІїЇєЄ'][a-zA-Zа-яА-ЯёЁіІїЇєЄ' ]+[a-zA-Zа-яА-ЯёЁіІїЇєЄ']?$/;
+		const reSurname = /^[a-zA-Zа-яА-ЯёЁіІїЇєЄ']+[a-zA-Zа-яА-ЯёЁіІїЇєЄ']?$/;
+		const reCompany = /^[a-zA-Zа-яА-ЯёЁіІїЇєЄ'"!.,«»0-9][a-zA-Zа-яА-ЯёЁіІїЇєЄ'"!.,«»0-9]+[a-zA-Zа-яА-ЯёЁіІїЇєЄ'"!.,«»0-9]?$/;
+		const reCard = /(?<!\d)\d{16}(?!\d)|(?<!\d[ _-])(?<!\d)\d{4}(?:[_ -]\d{4}){3}(?![_ -]?\d)/gm;
+		const rePhone = /^\+380\d{3}\d{2}\d{2}\d{2}|0\d{3}\d{2}\d{2}\d{2}$/;
+		const reEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		const reString = /a\d+a/gm;
+
+		function clearInp() {
+			name.value = null;
+			name.classList.remove("err");
+			surname.value = null;
+			surname.classList.remove("err");
+			company.value = null;
+			company.classList.remove("err");
+			card.value = null;
+			card.classList.remove("err");
+			phone.value = null;
+			phone.classList.remove("err");
+			email.value = null;
+			email.classList.remove("err");
+		}
+		function chechReg() {
+			if (name.value && surname.value && company.value && card.value && phone.value && email.value) {
+				if (reName.test(name.value) && reSurname.test(surname.value) && reCompany.test(company.value)
+					&& reCard.test(card.value) && rePhone.test(phone.value) && reEmail.test(email.value)) {
+					alert("Данные верны.");
+				} else {
+					alert("Не все данные верны.");
+				}
+			} else {
+				alert("Не все данные введены.");
+			}
+		}
+
+
+
+		name.onblur = function () {
+			const re = /^[a-zA-Zа-яА-ЯёЁіІїЇєЄ'][a-zA-Zа-яА-ЯёЁіІїЇєЄ' ]+[a-zA-Zа-яА-ЯёЁіІїЇєЄ']?$/;
+			if (!re.test(name.value)) {
+				name.classList.add("err");
+			} else {
+				name.classList.remove("err");
+			}
+		}
+		surname.onblur = function () {
+			const re = /^[a-zA-Zа-яА-ЯёЁіІїЇєЄ']+[a-zA-Zа-яА-ЯёЁіІїЇєЄ']?$/;
+			if (!re.test(surname.value)) {
+				surname.classList.add("err");
+			} else {
+				surname.classList.remove("err");
+			}
+		}
+		company.onblur = function () {
+			const re = /^[a-zA-Zа-яА-ЯёЁіІїЇєЄ'"!.,«»0-9][a-zA-Zа-яА-ЯёЁіІїЇєЄ'"!.,«»0-9]+[a-zA-Zа-яА-ЯёЁіІїЇєЄ'"!.,«»0-9]?$/;
+			if (!re.test(company.value)) {
+				company.classList.add("err");
+			} else {
+				company.classList.remove("err");
+			}
+		}
+		card.onblur = function () {
+			const re = /(?<!\d)\d{16}(?!\d)|(?<!\d[ _-])(?<!\d)\d{4}(?:[_ -]\d{4}){3}(?![_ -]?\d)/gm;
+			if (!re.test(card.value)) {
+				card.classList.add("err");
+			} else {
+				card.classList.remove("err");
+			}
+		}
+		phone.onblur = function () {
+			const re = /^\+380\d{3}\d{2}\d{2}\d{2}|0\d{3}\d{2}\d{2}\d{2}$/;
+			if (!re.test(phone.value)) {
+				phone.classList.add("err");
+			} else {
+				phone.classList.remove("err");
+			}
+		}
+		email.onblur = function () {
+			const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+			if (!re.test(email.value)) {
+				email.classList.add("err");
+			} else {
+				email.classList.remove("err");
+			}
+		}
+
+		restr.onblur = function () {
+			document.getElementById("str").innerHTML = restr.value.replace(reString, "!");
+		}
 	</script>
 </body>
 

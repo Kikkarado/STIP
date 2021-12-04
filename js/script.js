@@ -33,7 +33,6 @@ window.onload = function () {
 	for (var i = 0; i < elems.length; i++) {
 		var elem = elems[i],
 			c = getCookie("lr");
-		console.log(c);
 		elem.selectedIndex = c !== undefined ? c : 0;
 		frames[2].location = links[c !== undefined || null ? c : 0];
 	}
@@ -46,13 +45,11 @@ if (selectElement) {
 			case 0:
 				setCookie("lr", index, 30);
 				frames[2].location = links[index];
-				console.log(index);
 				break;
 
 			case 1:
 				setCookie("lr", index, 30);
 				frames[2].location = links[index];
-				console.log(index);
 				break;
 
 			case 2:

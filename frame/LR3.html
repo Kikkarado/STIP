@@ -64,6 +64,7 @@
 			minute: 'numeric',
 			second: 'numeric'
 		});
+
 		var dtp = document.getElementById("datetime-picker");
 		if (dtp) {
 			dtp.addEventListener('change', () => {
@@ -78,7 +79,6 @@
 			});
 		}
 
-		var date = document.getElementById("datetime");
 		dragElement(document.getElementById("field-move"));
 
 		function dragElement(elmnt) {

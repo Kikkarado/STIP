@@ -6,6 +6,7 @@
 @import "_LR3";
 @import "_LR4";
 @import "_LR5";
+@import "_LR6";
 
 html {
 	font-family: "Open Sans", sans-serif;
@@ -57,7 +58,7 @@ input.err::placeholder {
 }
 
 button.btn {
-	width: 40%;
+	width: 114px;
 	height: 2rem;
 	font-size: 12pt;
 	background: $brand-color;

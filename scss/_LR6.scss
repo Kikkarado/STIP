@@ -1,0 +1,27 @@
+.content-lr6 {
+	background: $mid-color;
+	height: 70vh;
+	overflow: hidden;
+	display: flex;
+	margin: 0 18px 18px 18px;
+	padding: 10px;
+	justify-content: center;
+	align-items: center;
+}
+
+.square {
+	width: 80px;
+	height: 80px;
+	display: inline-block;
+	position: relative;
+	text-align: left;
+	margin: 0px;
+	background: $headline;
+	opacity: 0;
+	text-align: center;
+	vertical-align: middle;
+}
+.sq {
+	color: $dark-color;
+	line-height: 80px;
+}

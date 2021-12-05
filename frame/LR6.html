@@ -12,37 +12,34 @@
 <body class="demonstration">
 	<button class="accordion">Задание 1</button>
 	<div class="panel">
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-			dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-			ea commodo consequat.</p>
+		<p>Серый квадрат 80*80пикс посередине слово КВАДРАТ</p>
+		<p>1. Отображается в центре окна браузера.</p>
+		<p>2. Исчезает слово Квадрат</p>
+		<p>3. Появляется черная рамка толщиной 2 пикселя</p>
+		<p>4. Движется в правый верхний угол</p>
+		<p>5. Увеличивается в 3 раза</p>
+		<p>6. Движется в левый нижний угол по пути изменяя прозрачность до 0</p>
 	</div>
 
 	<button class="accordion">Решение задания 1</button>
 	<div class="panel">
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-			dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-			ea commodo consequat.</p>
+		<button id="start" class="btn">Старт</button>
+		<div class="content-lr6">
+			<div class="square" id="square">
+				<span class="sq">Квадрат</span>
+			</div>
+		</div>
 	</div>
 
-	<button class="accordion">Задание 2</button>
-	<div class="panel">
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-			dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-			ea commodo consequat.</p>
-	</div>
-	<button class="accordion">Решение задания 2</button>
-	<div class="panel">
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-			dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-			ea commodo consequat.</p>
-	</div>
 	<button class="accordion">Ссылка на GitHub</button>
 	<div class="panel">
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-			dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-			ea commodo consequat.</p>
+		<p><a class="git-link" href="https://github.com/Kikkarado/STIP/blob/feature/frame/LR6.html"
+				rel="noopener noreferrer"
+				target="_blank">https://github.com/Kikkarado/STIP/blob/feature/frame/LR6.html</a>
+		</p>
 	</div>
 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script>
 		var acc = document.getElementsByClassName("accordion");
 		const toggleAccordian = (acc, open = !acc.classList.contains('active')) => {
@@ -60,6 +57,45 @@
 				toggleAccordian(a)
 			})
 		})
+
+		let startbBtn = $("#start");
+		let square = $("#square");
+		let area = $(".content-lr6");
+		var leftVal = area.innerWidth() - 20;
+		var topVal = area.innerHeight() - 20;
+
+		$(window).ready(function () {
+			console.log(leftVal / 2 - square.width() * 3 / 2);
+		});
+
+		startbBtn.click(function () {
+			square.animate({ opacity: "1" }, 1000, "linear",
+				function () {
+					$(".sq").animate({ opacity: "0" }, 1000, "linear",
+						function () {
+							square.css({ border: "2px solid #000" }).animate({ borderWidth: "2px" }, 1000, "linear",
+								function () {
+									square.animate({ left: leftVal / 2 - square.width() / 2, bottom: topVal / 2 - square.height() / 2 },
+										1000, "linear", function () {
+											square.animate({
+												width: square.width() * 3,
+												height: square.height() * 3,
+												left: leftVal / 2 - square.width() * 3 / 2,
+												bottom: topVal / 2 - square.height() * 3 / 2
+											}, 1000, "linear",
+												function () {
+													square.animate({
+														left: -leftVal / 2 + square.width() / 2,
+														top: topVal / 2 - square.height() / 2,
+														opacity: "0"
+													}, 1000, "linear");
+												});
+										});
+								});
+						});
+				});
+		});
+
 	</script>
 </body>
 

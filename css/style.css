@@ -259,6 +259,7 @@ p.desc {
 .zag {
   position: relative;
   display: inline-block;
+  color: #cc1629;
 }
 
 .modal {
@@ -276,15 +277,16 @@ p.desc {
 }
 
 .modal-content {
-  background-color: #fefefe;
+  background-color: #d4d4d8;
+  color: #27272a;
   margin: auto;
   padding: 20px;
-  border: 1px solid #888;
+  border: 1px solid #52525b;
   width: 80%;
 }
 
 .close {
-  color: #aaaaaa;
+  color: #27272a;
   float: right;
   font-size: 28px;
   font-weight: bold;
@@ -292,9 +294,44 @@ p.desc {
 
 .close:hover,
 .close:focus {
-  color: #000;
+  color: #84cc16;
   text-decoration: none;
   cursor: pointer;
+}
+
+.content-lr6 {
+  background: #52525b;
+  height: 70vh;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 18px 18px 18px;
+  padding: 10px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.square {
+  width: 80px;
+  height: 80px;
+  display: inline-block;
+  position: relative;
+  text-align: left;
+  margin: 0px;
+  background: #fffffe;
+  opacity: 0;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.sq {
+  color: #27272a;
+  line-height: 80px;
 }
 
 html {
@@ -372,7 +409,7 @@ input.err::placeholder {
 }
 
 button.btn {
-  width: 40%;
+  width: 114px;
   height: 2rem;
   font-size: 12pt;
   background: #84cc16;

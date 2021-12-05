@@ -40,7 +40,7 @@
 	<button class="accordion">Решение задания 2</button>
 	<div class="panel">
 		<div class="content-lr5">
-			<h1 class="zag" id="anim">Заголовк</h1>
+			<h1 class="zag" id="anim">Нажми</h1>
 		</div>
 	</div>
 	<button class="accordion">Ссылка на GitHub</button>
@@ -85,12 +85,10 @@
 			modal.css({ "display": "block" });
 		});
 
-		// When the user clicks on <span> (x), close the modal
 		span.click(function () {
 			modal.css({ "display": "none" });
 		});
 
-		// When the user clicks anywhere outside of the modal, close it
 		$(window).click(function (e) {
 			if (e.target.className == "modal") {
 				modal.css({ "display": "none" });

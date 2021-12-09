@@ -64,34 +64,34 @@
 		var leftVal = area.innerWidth() - 20;
 		var topVal = area.innerHeight() - 20;
 
-		$(window).ready(function () {
-			console.log(leftVal / 2 - square.width() * 3 / 2);
-		});
-
 		startbBtn.click(function () {
 			square.animate({ opacity: "1" }, 1000, "linear",
 				function () {
 					$(".sq").animate({ opacity: "0" }, 1000, "linear",
 						function () {
-							square.css({ border: "2px solid #000" }).animate({ borderWidth: "2px" }, 1000, "linear",
-								function () {
-									square.animate({ left: leftVal / 2 - square.width() / 2, bottom: topVal / 2 - square.height() / 2 },
-										1000, "linear", function () {
-											square.animate({
-												width: square.width() * 3,
-												height: square.height() * 3,
-												left: leftVal / 2 - square.width() * 3 / 2,
-												bottom: topVal / 2 - square.height() * 3 / 2
-											}, 1000, "linear",
-												function () {
-													square.animate({
-														left: -leftVal / 2 + square.width() / 2,
-														top: topVal / 2 - square.height() / 2,
-														opacity: "0"
-													}, 1000, "linear");
-												});
-										});
-								});
+							square.css({ border: "2px solid #000" })
+								.animate({ borderWidth: "2px" }, 1000, "linear",
+									function () {
+										square.animate({
+											left: leftVal / 2 - square.width() / 2,
+											bottom: topVal / 2 - square.height() / 2
+										}, 1000, "linear",
+											function () {
+												square.animate({
+													width: square.width() * 3,
+													height: square.height() * 3,
+													left: leftVal / 2 - square.width() * 3 / 2,
+													bottom: topVal / 2 - square.height() * 3 / 2
+												}, 1000, "linear",
+													function () {
+														square.animate({
+															left: -leftVal / 2 + square.width() / 2,
+															top: topVal / 2 - square.height() / 2,
+															opacity: "0"
+														}, 1000, "linear");
+													});
+											});
+									});
 						});
 				});
 		});

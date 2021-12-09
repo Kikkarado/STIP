@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<subscription>
+	<edition e_id = "1">
+		<type-edition>Журнал</type-edition>
+		<subjects>Развления</subjects>
+		<publication-name>Игромир</publication-name>
+		<periodicity>Месячное</periodicity>
+		<price>10</price>
+		<index>30505</index>
+	</edition>
+	<edition e_id = "2">
+		<type-edition>Газета</type-edition>
+		<subjects>Садоводство</subjects>
+		<publication-name>Сад и огород</publication-name>
+		<periodicity>Недельное</periodicity>
+		<price>7.5</price>
+		<index>15563</index>
+	</edition>
+	<edition e_id = "3">
+		<type-edition>Журнал</type-edition>
+		<subjects>Технологии</subjects>
+		<publication-name>Сад и огород</publication-name>
+		<periodicity>Недельное</periodicity>
+		<price>7.5</price>
+		<index>15563</index>
+	</edition>
+</subscription>

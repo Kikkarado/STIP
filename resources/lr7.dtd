@@ -1,0 +1,9 @@
+<!ELEMENT subscription (edition+)>
+<!ELEMENT edition (type-edition,subjects,publication-name,periodicity,price,index)>
+<!ATTLIST edition e_id NMTOKEN #REQUIRED>
+<!ELEMENT type-edition (#PCDATA)>
+<!ELEMENT subjects (#PCDATA)>
+<!ELEMENT publication-name (#PCDATA)>
+<!ELEMENT periodicity (#PCDATA)>
+<!ELEMENT price (#PCDATA)>
+<!ELEMENT index (#PCDATA)>

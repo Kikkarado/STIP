@@ -124,6 +124,16 @@ p.desc {
           text-decoration: underline dashed #84cc16;
 }
 
+subscription {
+  display: inline;
+  color: #d4d4d8;
+}
+
+edition {
+  display: block;
+  margin: 10px;
+}
+
 .navbar {
   overflow: hidden;
   background-color: #d4d4d8;

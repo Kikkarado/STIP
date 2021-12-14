@@ -2,6 +2,7 @@
 <html xsl:version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <body style="font-family:'Open Sans', sans-serif;font-size:14pt; display: inline-block;">
 <xsl:for-each select="subscription/edition">
+	<xsl:sort select="price" order="descending"/>
 	<div style="background-color:#84cc16;padding:4px; color:#27272a;">
 		<span style="font-weight:bold"><xsl:value-of select="type-edition"/> - </span>
 		"<xsl:value-of select="publication-name"/>"

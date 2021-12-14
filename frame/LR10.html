@@ -12,38 +12,41 @@
 <body class="demonstration">
 	<button class="accordion">Задание 1</button>
 	<div class="panel">
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-			dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-			ea commodo consequat.</p>
+		<p>Загрузите документ XML, разработанный в предыдущих работах, в объект
+			документ и отобразите в окне браузера.</p>
+		<p>Используя методы DOM XML, сформируйте HTML страницу, содержащую
+			таблицу из нескольких столбцов.</p>
 	</div>
-
 	<button class="accordion">Решение задания 1</button>
 	<div class="panel">
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-			dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-			ea commodo consequat.</p>
+		<div id='content'>
+			<table id='books' cellpadding='10px' style="text-align:left;">
+				<thead>
+					<tr>
+						<th>Тип</th>
+						<th>Название</th>
+						<th>Тематика</th>
+						<th>Периодичность</th>
+						<th>Цена</th>
+					</tr>
+				</thead>
+				<tbody>
+
+				</tbody>
+			</table>
+		</div>
 	</div>
 
-	<button class="accordion">Задание 2</button>
-	<div class="panel">
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-			dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-			ea commodo consequat.</p>
-	</div>
-	<button class="accordion">Решение задания 2</button>
-	<div class="panel">
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-			dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-			ea commodo consequat.</p>
-	</div>
 	<button class="accordion">Ссылка на GitHub</button>
 	<div class="panel">
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-			dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-			ea commodo consequat.</p>
+		<p><a class="git-link" href="https://github.com/Kikkarado/STIP/blob/feature/frame/LR10.html"
+				rel="noopener noreferrer"
+				target="_blank">https://github.com/Kikkarado/STIP/blob/feature/frame/LR10.html</a>
+		</p>
 	</div>
 
 	<script>
+
 		var acc = document.getElementsByClassName("accordion");
 		const toggleAccordian = (acc, open = !acc.classList.contains('active')) => {
 			acc.classList.toggle('active', open)
@@ -60,6 +63,47 @@
 				toggleAccordian(a)
 			})
 		})
+
+		let xmlContent = '';
+		let tableBooks = document.getElementById('books');
+		fetch('/resources/lr7.xml').then((response) => {
+			response.text().then((xml) => {
+				xmlContent = xml;
+
+				let parser = new DOMParser();
+				let xmlDOM = parser.parseFromString(xmlContent, 'application/xml');
+				let books = xmlDOM.querySelectorAll('edition');
+
+				books.forEach(bookXmlNode => {
+
+					let row = document.createElement('tr');
+
+					let td = document.createElement('td');
+					td.innerText = bookXmlNode.children[0].innerHTML;
+					row.appendChild(td);
+
+					td = document.createElement('td');
+					td.innerText = bookXmlNode.children[2].innerHTML;
+					row.appendChild(td);
+
+					td = document.createElement('td');
+					td.innerText = bookXmlNode.children[1].innerHTML;
+					row.appendChild(td);
+
+					td = document.createElement('td');
+					td.innerText = bookXmlNode.children[3].innerHTML;
+					row.appendChild(td);
+
+					td = document.createElement('td');
+					td.innerText = bookXmlNode.children[4].innerHTML;
+					row.appendChild(td);
+
+					tableBooks.children[1].appendChild(row);
+
+				});
+
+			});
+		});
 	</script>
 </body>
 

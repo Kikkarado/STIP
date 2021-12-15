@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+
+	<script type="text/javascript" src="loadxml.js">
+
+	</script>
+</head>
+
+<body>
+
+</body>
+
+<script type="text/javascript">
+
+	var xmlDoc = loadXMLDoc("numb.xml");
+
+	var x = xmlDoc.getElementsByTagName("num");
+
+	for (i = 0; i < x.length; i++) {
+		var f = Number(x[i].text);
+		switch (f) {
+			case 1:
+				x[i].text = "Один";
+				break;
+			case 2:
+				x[i].text = "Два";
+				break;
+			case 3:
+				x[i].text = "Три";
+				break;
+			case 4:
+				x[i].text = "Четыре";
+				break;
+			case 5:
+				x[i].text = "Пять";
+				break;
+			case 6:
+				x[i].text = "Шесть";
+				break;
+			case 7:
+				x[i].text = "Семь";
+				break;
+			case 8:
+				x[i].text = "Восемь";
+				break;
+			case 9:
+				x[i].text = "Девять";
+				break;
+			case 10:
+				x[i].text = "Десять";
+				break;
+			default:
+				break;
+		}
+	}
+
+
+
+	x = xmlDoc.getElementsByTagName("num");
+
+	for (i = 0; i < x.length; i++) {
+
+		document.write(x[i].childNodes[0].nodeValue);
+
+		document.write("<br />");
+
+	}
+
+</script>
+
+</html>

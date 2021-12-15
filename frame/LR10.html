@@ -20,7 +20,7 @@
 	<button class="accordion">Решение задания 1</button>
 	<div class="panel">
 		<div id='content'>
-			<table id='books' cellpadding='10px' style="text-align:left;">
+			<table id='filexml' cellpadding='10px' style="text-align:left;">
 				<thead>
 					<tr>
 						<th>Тип</th>
@@ -65,7 +65,7 @@
 		})
 
 		let xmlContent = '';
-		let tableBooks = document.getElementById('books');
+		let tableBooks = document.getElementById('filexml');
 		fetch('/resources/lr7.xml').then((response) => {
 			response.text().then((xml) => {
 				xmlContent = xml;
